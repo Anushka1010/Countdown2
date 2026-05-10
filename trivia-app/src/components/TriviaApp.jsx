@@ -24,7 +24,7 @@ const TriviaApp = () => {
     <>
       Trivia App
       {questions.map((question, index) => (
-        <Question key={index} questionData={question}/>
+        <Question key={question.id} questionData={question}/>
       ))}
     </>
   );
