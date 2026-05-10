@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Question from "./Question";
-import Button from "@mui/material/Button";
+import { Container, Box, Button, Typography } from "@mui/material";
 
 const TriviaApp = () => {
   const [questions, setQuestions] = useState([]);
@@ -17,19 +17,20 @@ const TriviaApp = () => {
 	}, []);
 
   return (
-    <>
-      <div style={{ padding: "20px" }}>
-        <h1>Trivia App</h1>
+    <Container maxWidth="sm">
+      <Box sx={{ py: 4, textAlign: 'center' }}>
+        <Typography variant="h1">Trivia App</Typography>
 
-        <Button variant="outlined" onClick={fetchQuestions} style={{ marginBottom: "20px" }}>
+        <Button variant="outlined" onClick={fetchQuestions} sx={{ my: 4, display: 'inline-block', mx: 'auto' }}>
           Generate New Questions
         </Button>
 
-        {questions.map((question, index) => (
+        {questions.map((question) => (
           <Question key={question.id} questionData={question}/>
         ))}
-      </div>
-    </>
+        
+      </Box>
+    </Container>
   );
 };
 
