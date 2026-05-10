@@ -15,7 +15,7 @@ function buildAnswerChoices(questionData) {
   }
 
 const Question = ({ questionData }) => {
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [selectedAnswer, setSelectedAnswer] = useState();
   const [answerChoices] = useState(() => buildAnswerChoices(questionData));
 
   return (
@@ -26,16 +26,16 @@ const Question = ({ questionData }) => {
         <Button variant="contained"
           key={index}
           onClick={() => setSelectedAnswer(answer)}
+          color={
+            selectedAnswer?.text === answer.text
+              ? (answer.isCorrect ? "success" : "error")
+              : "primary"
+          }
+
         >
           {answer.text}
         </Button>
       ))}
-
-      {selectedAnswer && (
-        <p>
-          {selectedAnswer.isCorrect ? "Correct!" : "Incorrect :("}
-        </p>
-      )}
     </div>
   );
 };
